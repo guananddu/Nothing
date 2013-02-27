@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>图片镂空 - 两张图片</title>
+		<!-- 设置参数 -->
+		<script>
+			(function() {
+				// 在这里修改背景图片
+				// 背景纹理图
+				window.BACKGROUND = 'img/huge512a0f516c4d8.jpg';
+				// 白条
+				window.FFFLINE    = 'img/huge512a1021ee8df.jpg';
+				// 中间区域
+				window.AREA       = 'img/huge512a102039dde.jpg';
+
+				/-----------------------下方一般不改------------------------/
+
+				// 镂空模板
+				window.HOLLOW     = 'img/shan41.png';
+				window.HOLLOW2    = 'img/shan42.png';
+
+				// 图片宽高
+				window.height     = 500;// 高
+				window.width      = 500;// 宽
+			})();
+		</script>
+	</head>
+	
+	<body>
+		<style>
+		/*
+			针对Chrome浏览器可以采用这种简单方式
+		 */
+		.boxparent {
+			/* 在这里设置大背景图 */
+			background: url(huge5129041299a15.jpg);
+			width: 500px;
+			height: 500px;
+		}
+		.box{
+			/* 在这里设置线条背景图 */
+			background: url(huge51290414d28f8.jpg);
+			-webkit-mask: url(mask.png);
+			width: 500px;
+			height: 500px;
+		}
+		.stage {
+			/*width: 500px;
+			height: 500px;*/
+		}
+		.stage_mask, .stage_mask2 {
+			display: none;
+		}
+		.canvas_container {
+			position: relative;
+		}
+		.canvas_container canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		</style>
+		<!-- Chrome 浏览器的特殊方法
+		<div class="boxparent" id="boxparent">
+			<div class="box" id="box"></div>
+		</div>
+		-->
+		<div id="canvasContainer" class="canvas_container">
+			<!-- 针对支持html5的方法，使用canvas -->
+			<canvas id="stageBack" class="stage_back"></canvas>
+			<!-- 辅助画布 -->
+			<canvas id="stageMask" class="stage_mask"></canvas>
+			<canvas id="stageMask2" class="stage_mask2"></canvas>
+
+			<canvas id="stageFFF" class="stage_fff"></canvas>
+			<canvas id="stageAREA" class="stage_area"></canvas>
+		</div>
+		<!-- 处理函数 -->
+		<script>
+			(function() {
+				var canvasBack  = document.getElementById('stageBack');
+				var contextBack = canvasBack.getContext('2d');
+
+				var canvasMask  = document.getElementById('stageMask');
+				var contextMask = canvasMask.getContext('2d');
+
+				var canvasMask2  = document.getElementById('stageMask2');
+				var contextMask2 = canvasMask2.getContext('2d');
+
+				var canvasFFF  = document.getElementById('stageFFF');
+				var contextFFF = canvasFFF.getContext('2d');
+
+				var canvasAREA  = document.getElementById('stageAREA');
+				var contextAREA = canvasAREA.getContext('2d');
+
+				// 设置宽高
+				canvasBack.setAttribute('width', width);
+				canvasBack.setAttribute('height', height);
+
+				canvasMask.setAttribute('width', width);
+				canvasMask.setAttribute('height', height);
+				canvasMask2.setAttribute('width', width);
+				canvasMask2.setAttribute('height', height);
+
+				canvasFFF.setAttribute('width', width);
+				canvasFFF.setAttribute('height', height);
+
+				canvasAREA.setAttribute('width', width);
+				canvasAREA.setAttribute('height', height);
+
+				var canvasContainer 
+					= document.getElementById('canvasContainer');
+				canvasContainer.style.width  = width + 'px';
+				canvasContainer.style.height = height + 'px';
+
+				var maskF   = false,
+					maskF2  = false,
+					backF   = false,
+					fffF    = false,
+					areaF   = false;
+
+				// 镂空模板
+				var maskImg  = new Image();
+				var maskImg2 = new Image();
+				// 背景图
+				var backImg = new Image();
+				// 线图
+				var fffImg  = new Image();
+				var areaImg = new Image();
+
+				maskImg.onload = function() {
+					maskF   = true;
+				};
+
+				maskImg2.onload = function() {
+					maskF2   = true;
+				};
+
+				backImg.onload = function() {
+					backF   = true;
+				};
+
+				fffImg.onload = function() {
+					fffF   = true;
+				};
+
+				areaImg.onload = function() {
+					areaF   = true;
+				};
+
+				maskImg.src = HOLLOW;
+				maskImg2.src = HOLLOW2;
+				backImg.src = BACKGROUND;
+				fffImg.src  = FFFLINE;
+				areaImg.src = AREA;
+
+				var timer   = window.setInterval(function(){
+					maskF 
+						&& maskF2
+						&& backF 
+						&& fffF 
+						&& areaF
+						&& goNext();
+				}, 50);
+
+				function goNext() {
+					// 清除timer
+					window.clearInterval(timer);
+					// 画背景图
+					contextBack.drawImage(backImg, 0, 0);
+					// 画模板
+					contextMask.drawImage(maskImg, 0, 0);
+					contextMask2.drawImage(maskImg2, 0, 0);
+					// 画线图
+					contextFFF.drawImage(fffImg, 0, 0);
+					contextAREA.drawImage(areaImg, 0, 0);
+
+					var imgDataBack 
+						= contextBack.getImageData(0, 0, canvasBack.width, canvasBack.height);
+					var imgDataMask
+						= contextMask.getImageData(0, 0, canvasMask.width, canvasMask.height);
+					var imgDataMask2
+						= contextMask2.getImageData(0, 0, canvasMask2.width, canvasMask2.height);
+					var imgDataFFF
+						= contextFFF.getImageData(0, 0, canvasFFF.width, canvasFFF.height);
+					var imgDataArea
+						= contextAREA.getImageData(0, 0, canvasAREA.width, canvasAREA.height);
+
+					for (var i = 0; i < imgDataMask.data.length; i += 4) {
+						// imgDataMask.data[i + 3] != 0
+						// 	&& (imgDataBack.data[i]     = imgDataLine.data[i])
+						// 	&& (imgDataBack.data[i + 1] = imgDataLine.data[i + 1])
+						// 	&& (imgDataBack.data[i + 2] = imgDataLine.data[i + 2])
+						// 	&& (imgDataBack.data[i + 3] = imgDataMask.data[i + 3]);
+						// imgDataLine.data[i + 3] = imgDataMask.data[i + 3];
+						// 半透明
+						// imgDataMask.data[i + 3] < 255  
+						// 	&& imgDataMask.data[i + 3] > 0
+						// 	&& (imgDataBack.data[i + 3] = imgDataMask.data[i + 3]);
+						// 纯黑色
+						// imgDataMask.data[i] == 0 && imgDataMask.data[i + 1] == 0 && imgDataMask.data[i + 2] == 0
+						// 	&& imgDataMask.data[i + 3] == 255
+						// 	&& (function() {
+						// 		imgDataBack.data[i] = imgDataFFF.data[i];
+						// 		imgDataBack.data[i + 1] = imgDataFFF.data[i + 1];
+						// 		imgDataBack.data[i + 2] = imgDataFFF.data[i + 2];
+						// 		imgDataBack.data[i + 3] = imgDataFFF.data[i + 3];
+						// 	})();
+						// imgDataMask.data[i] == 255 && imgDataMask.data[i + 1] == 255 && imgDataMask.data[i + 2] == 255
+						// 	&& imgDataMask.data[i + 3] == 255
+						// 	&& (function() {
+						// 		imgDataBack.data[i] = imgDataArea.data[i];
+						// 		imgDataBack.data[i + 1] = imgDataArea.data[i + 1];
+						// 		imgDataBack.data[i + 2] = imgDataArea.data[i + 2];
+						// 		imgDataBack.data[i + 3] = imgDataArea.data[i + 3];
+						// 	})();
+						imgDataFFF.data[i + 3] = imgDataMask.data[i + 3];
+					}
+					contextFFF.putImageData(imgDataFFF, 0, 0);
+					for (var i = 0; i < imgDataMask2.data.length; i += 4) {
+						imgDataArea.data[i + 3] = imgDataMask2.data[i + 3];
+					}
+					contextAREA.putImageData(imgDataArea, 0, 0);
+				};
+			})();
+		</script>
+	</body>
+</html>
