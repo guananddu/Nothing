@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>图片镂空 - 两张图片</title>
+		<!-- 设置参数 -->
+		<script>
+			(function() {
+				// 背景纹理图
+				window.BACKGROUND = 'img/huge512a102039dde.jpg';
+				// 线条纹理图
+				window.LINE       = 'img/huge512a0f516c4d8.jpg';
+
+				/-----------------------下方一般不改------------------------/
+
+				// 镂空模板
+				window.HOLLOW     = 'img/for4x.png';
+
+				// 图片宽高
+				window.height     = 500;// 高
+				window.width      = 500;// 宽
+			})();
+		</script>
+	</head>
+	
+	<body>
+		<style>
+		/*
+			针对Chrome浏览器可以采用这种简单方式
+		 */
+		.boxparent {
+			/* 在这里设置大背景图 */
+			background: url(huge5129041299a15.jpg);
+			width: 500px;
+			height: 500px;
+		}
+		.box{
+			/* 在这里设置线条背景图 */
+			background: url(huge51290414d28f8.jpg);
+			-webkit-mask: url(mask.png);
+			width: 500px;
+			height: 500px;
+		}
+		.stage {
+			/*width: 500px;
+			height: 500px;*/
+		}
+		.stage_mask {
+			display: none;
+		}
+		.canvas_container {
+			position: relative;
+		}
+		.canvas_container canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.grayege {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1000;
+			width: 500px;
+			height: 500px;
+			background: url(img/for4x-line.png);
+			display: none;
+		}
+		</style>
+		<!-- Chrome 浏览器的特殊方法
+		<div class="boxparent" id="boxparent">
+			<div class="box" id="box"></div>
+		</div>
+		-->
+		<div id="canvasContainer" class="canvas_container">
+			<!-- 针对支持html5的方法，使用canvas -->
+			<canvas id="stage" class="stage"></canvas>
+			<!-- 辅助画布 -->
+			<canvas id="stageMask" class="stage_mask"></canvas>
+			<canvas id="stageLine" class="stage_line"></canvas>
+			<!-- 八个小线条 -->
+			<div id="grayege" class="grayege"></div>
+		</div>
+		<!-- 处理函数 -->
+		<script>
+			(function() {
+				var canvas  = document.getElementById('stage');
+				var context = canvas.getContext('2d');
+
+				var canvasMask  = document.getElementById('stageMask');
+				var contextMask = canvasMask.getContext('2d');
+
+				var canvasLine  = document.getElementById('stageLine');
+				var contextLine = canvasLine.getContext('2d');
+
+				// 设置宽高
+				canvas.setAttribute('width', width);
+				canvas.setAttribute('height', height);
+
+				canvasMask.setAttribute('width', width);
+				canvasMask.setAttribute('height', height);
+
+				canvasLine.setAttribute('width', width);
+				canvasLine.setAttribute('height', height);
+
+				var canvasContainer 
+					= document.getElementById('canvasContainer');
+				canvasContainer.style.width  = width + 'px';
+				canvasContainer.style.height = height + 'px';
+
+				var maskF   = false
+					backF   = false
+					lineF   = false;
+
+				// 镂空模板
+				var maskImg = new Image();
+				// 背景图
+				var backImg = new Image();
+				// 线图
+				var lineImg = new Image();
+
+				maskImg.onload = function() {
+					maskF   = true;
+				};
+
+				backImg.onload = function() {
+					backF   = true;
+				};
+
+				lineImg.onload = function() {
+					lineF   = true;
+				};
+
+				maskImg.src = HOLLOW;
+				backImg.src = BACKGROUND;
+				lineImg.src = LINE;
+
+				var timer   = window.setInterval(function(){
+					maskF 
+						&& backF 
+						&& lineF 
+						&& goNext();
+				}, 50);
+
+				function goNext() {
+					// 清除timer
+					window.clearInterval(timer);
+					// 画背景图
+					context.drawImage(backImg, 0, 0);
+					// 画模板
+					contextMask.drawImage(maskImg, 0, 0);
+					// 画线图
+					contextLine.drawImage(lineImg, 0, 0);
+
+					// var imgDataBack 
+					// 	= context.getImageData(0, 0, canvas.width, canvas.height);
+					var imgDataMask
+						= contextMask.getImageData(0, 0, canvasMask.width, canvasMask.height);
+					var imgDataLine
+						= contextLine.getImageData(0, 0, canvasLine.width, canvasLine.height);
+
+					for (var i = 0; i < imgDataMask.data.length; i += 4) {
+						// imgDataMask.data[i + 3] != 0
+						// 	&& (imgDataBack.data[i]     = imgDataLine.data[i])
+						// 	&& (imgDataBack.data[i + 1] = imgDataLine.data[i + 1])
+						// 	&& (imgDataBack.data[i + 2] = imgDataLine.data[i + 2])
+						// 	&& (imgDataBack.data[i + 3] = imgDataMask.data[i + 3]);
+						imgDataLine.data[i + 3] = imgDataMask.data[i + 3];
+					}
+					contextLine.putImageData(imgDataLine, 0, 0);
+					// 画边线
+					document.getElementById('grayege').style.display = 'block';
+				};
+			})();
+		</script>
+	</body>
+</html>
