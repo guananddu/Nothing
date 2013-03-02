@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <title>视频管理</title>
+    <link href="/src/css/reset.css" rel="stylesheet" />
+    <link href="/src/css/fonts.css" rel="stylesheet" />
+    <link href="/src/css/table.css" rel="stylesheet" />
+    <link href="/src/css/index.css" rel="stylesheet" />
+    <base target="_blank" />
+    <script>
+        var _IE_      = (/msie (\d+\.\d+)/i.test(navigator.userAgent) 
+            ? (document.documentMode || + RegExp['\x241']) 
+            : undefined);
+    </script>
+</head>
+<body>
+    <div id="container" class="container">
+        <div id="login-content" class="login-content">
+            <!-- username -->
+            <div id="username-container" class="item-container">
+                <label for="username">用户名：</label>
+                <input type="text" id="username" class="word" />
+            </div>
+            <!-- password -->
+            <div id="password-container" class="item-container">
+                <label for="password">密码：</label>
+                <input type="text" id="password" class="word" />
+            </div>
+            <!-- 登录 -->
+            <div id="login-container" class="login-container">
+                <button id="login" class="login">登录</button>
+            </div>
+        </div>
+        <div id="authed-content" class="authed-content">
+            <!-- 操作区域 -->
+            <div id="operation" class="operation">
+                <!-- maxlength -->
+                <div id="maxlength-container" class="item-container">
+                    <label for="maxlength">最大长度：</label>
+                    <input type="text" id="maxlength" class="word" />
+                </div>
+                <!-- minlength -->
+                <div id="minlength-container" class="item-container">
+                    <label for="minlength">最小长度：</label>
+                    <input type="text" id="minlength" class="word" />
+                </div>
+                <!-- pagenum -->
+                <div id="pagenum-container" class="item-container">
+                    <label for="pagenum">页数：</label>
+                    <input type="text" id="pagenum" class="word" />
+                </div>
+                <!-- query -->
+                <div id="query-container" class="item-container">
+                    <label for="query">检索词：</label>
+                    <input type="text" id="query" class="word" />
+                </div>
+                <!-- isreleated -->
+                <div id="isreleated-container" class="item-container">
+                    <label for="isreleated">是否相关：</label>
+                    <input type="text" id="isreleated" class="word" />
+                    <span class="red">（0或1）</span>
+                </div>
+                <!-- 换行 -->
+                <br />
+                <!-- 更改设置 -->
+                <div id="submit-container" class="submit-container">
+                    <button id="submit" class="submit">更改设置</button>
+                </div>
+                <!-- 两个tab -->
+                <div id="tab-switch-container" class="tab-switch-container">
+                    <span id="Lists" class="current">视频信息列表</span>
+                    <span id="Tasks">任务状态列表</span>
+                </div>
+                <div id="idsubmit-container" class="idsubmit-container">
+                    <button id="idsubmit" class="submit">提交VideoID</button>
+                </div>
+            </div>
+
+            <!-- 表格区域 -->
+            <div id="table-container" class="table-container">正在生成表格数据...</div>
+
+            <!-- 分页相关组件 -->
+            <div id="pager-container" class="pager-container">
+                <div id="pager" class="pager"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/src/js/jquery-1.9.0.min.js"></script>
+    <script src="/src/js/table.js"></script>
+    <script src="/src/js/index.js"></script>
+</body>
+</html>
