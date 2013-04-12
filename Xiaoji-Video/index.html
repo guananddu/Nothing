@@ -10,7 +10,8 @@
     <link href="/src/css/fonts.css" rel="stylesheet" />
     <link href="/src/css/table.css" rel="stylesheet" />
     <link href="/src/css/index.css" rel="stylesheet" />
-    <base target="_blank" />
+    <link href="/src/css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet" />
+    <base target="_self" />
     <script>
         var _IE_      = (/msie (\d+\.\d+)/i.test(navigator.userAgent) 
             ? (document.documentMode || + RegExp['\x241']) 
@@ -28,25 +29,67 @@
             <!-- password -->
             <div id="password-container" class="item-container">
                 <label for="password">密码：</label>
-                <input type="text" id="password" class="word" />
+                <input type="password" id="password" class="word" />
             </div>
             <!-- 登录 -->
             <div id="login-container" class="login-container">
                 <button id="login" class="login">登录</button>
             </div>
+            <!-- 注册 -->
+            <span id="register-container" class="register-container">
+                注册
+            </span>
+            <!-- 注册区域 -->
+            <div id="register-outer-container" class="register-outer-container">
+                <!-- username -->
+                <div id="reusername-container" class="item-container">
+                    <label for="reusername">用户名：</label>
+                    <input type="text" id="reusername" class="word" />
+                </div>
+                <!-- password -->
+                <div id="repassword-container" class="item-container">
+                    <label for="repassword">密码：</label>
+                    <input type="password" id="repassword" class="word" />
+                </div>
+                <!-- password -->
+                <div id="repasswordrepeat-container" class="item-container">
+                    <label for="repasswordrepeat">确认密码：</label>
+                    <input type="password" id="repasswordrepeat" class="word" />
+                </div>
+                <!-- 注册 -->
+                <div id="register-container" class="login-container">
+                    <button id="register" class="login">注册</button>
+                </div>
+            </div>
         </div>
         <div id="authed-content" class="authed-content">
             <!-- 操作区域 -->
             <div id="operation" class="operation">
+                <!-- 已登录用户名 -->
+                <span id="has-logined" class="has-logined">
+                    <strong id="has-logined-target"></strong> 已登录</span>
+                <!-- tips -->
+                <span id="tips" class="tips"></span>
+                <!-- editpassword -->
+                <span id="editpass" class="editpass">[修改密码]</span>
+                <!-- name -->
+                <div id="name-container" class="item-container">
+                    <label for="name">任务名：</label>
+                    <input type="text" id="name" class="word" />
+                    <span class="notice">(命名规则：科室+分类，如心外科-心包，心外科-冠心病)</span>
+                </div>
+                <br />
                 <!-- maxlength -->
                 <div id="maxlength-container" class="item-container">
                     <label for="maxlength">最大长度：</label>
                     <input type="text" id="maxlength" class="word" />
+                    <span class="notice">(秒)</span>
                 </div>
                 <!-- minlength -->
                 <div id="minlength-container" class="item-container">
                     <label for="minlength">最小长度：</label>
                     <input type="text" id="minlength" class="word" />
+                    <span class="notice">(秒)</span>
                 </div>
                 <!-- pagenum -->
                 <div id="pagenum-container" class="item-container">
@@ -58,25 +101,151 @@
                     <label for="query">检索词：</label>
                     <input type="text" id="query" class="word" />
                 </div>
-                <!-- isreleated -->
-                <div id="isreleated-container" class="item-container">
-                    <label for="isreleated">是否相关：</label>
-                    <input type="text" id="isreleated" class="word" />
-                    <span class="red">（0或1）</span>
+                <!-- iscc -->
+                <div id="iscc-container" class="item-container">
+                    <label for="iscc">需要字幕：</label>
+                    <label class="sure-label" for="iscc-sure">是</label>
+                    <input type="radio" id="iscc-sure" checked="checked" name="iscc-radio" />
+                    <label class="sure-label" for="iscc-no">否</label>
+                    <input type="radio" id="iscc-no" name="iscc-radio" />
+                    <!-- <input type="text" id="iscc" class="word" /> -->
+                    <!-- <span class="red">（0或1）</span> -->
+                </div>
+                <!-- ishd -->
+                <div id="ishd-container" class="item-container">
+                    <label for="ishd">需要高清：</label>
+                    <label class="sure-label" for="ishd-sure">是</label>
+                    <input type="radio" id="ishd-sure" checked="checked" name="ishd-radio" />
+                    <label class="sure-label" for="ishd-no">否</label>
+                    <input type="radio" id="ishd-no" name="ishd-radio" />
+                    <!-- <input type="text" id="ishd" class="word" /> -->
+                    <!-- <span class="red">（0或1）</span> -->
                 </div>
                 <!-- 换行 -->
                 <br />
-                <!-- 更改设置 -->
+                <!-- 添加任务 -->
                 <div id="submit-container" class="submit-container">
-                    <button id="submit" class="submit">更改设置</button>
+                    <button id="submit" class="submit">添加任务</button>
+                </div>
+                <!-- 仍旧添加 -->
+                <div id="still-submit-container" class="still-submit-container">
+                    <div class="submit-container">
+                        <button id="still-submit" class="submit">继续添加</button>
+                    </div>
+                    <div class="submit-container">
+                        <button id="cancel-submit" class="submit">取消</button>
+                    </div>
                 </div>
                 <!-- 两个tab -->
                 <div id="tab-switch-container" class="tab-switch-container">
-                    <span id="Lists" class="current">视频信息列表</span>
-                    <span id="Tasks">任务状态列表</span>
+                    <!-- 历史查询 -->
+                    <span id="history-target" class="history-target">[历史查询]</span>
+
+                    <span id="Tasks" class="current">任务状态列表</span>
+                    <span id="Lists">视频信息列表</span>
+                    <!-- 账户管理 -->
+                    <span id="Accts">账户管理</span>
+                    <!-- 添加用户 -->
+                    <span id="AddUserTarget" class="AddUserTarget">[添加用户]</span>
                 </div>
                 <div id="idsubmit-container" class="idsubmit-container">
                     <button id="idsubmit" class="submit">提交VideoID</button>
+                </div>
+                <div id="listInfo" class="listInfo">
+                    ID：<span id="info-id"></span>
+                    检索词：<span id="info-word"></span>
+                    检索结果：<span id="info-total"></span>
+                </div>
+            </div>
+
+            <!-- 修改密码 -->
+            <div id="editpass-container" class="operation">
+                <!-- old -->
+                <div class="item-container">
+                    <label for="oldpassword">原密码：</label>
+                    <input type="password" id="oldpassword" class="word" />
+                </div>
+                <!-- newpassword -->
+                <div class="item-container">
+                    <label for="newpassword">新密码：</label>
+                    <input type="password" id="newpassword" class="word" />
+                </div>
+                <!-- newpassword repeat -->
+                <div class="item-container">
+                    <label for="renewpassword">确认新密码：</label>
+                    <input type="password" id="renewpassword" class="word" />
+                </div>
+                <!-- 确认修改 -->
+                <div class="login-container">
+                    <button id="edit-password" class="login">确认修改</button>
+                </div>
+            </div>
+
+            <!-- 历史查询 -->
+            <div id="history-container" class="operation">
+                <div class="item-container">
+                    <label>查询类型：</label>
+                    <select id="history-query-level">
+                        <option selected="selected" value="1">按ID查询</option>
+                        <option value="2">按任务名查询</option>
+                        <option value="3">按检索词查询</option>
+                    </select>
+                </div>
+                <div class="item-container">
+                    <label for="history-query-value">检索值：</label>
+                    <input type="text" id="history-query-value" class="word" />
+                </div>
+                <br />
+                <div class="item-container">
+                    <label for="history-query-startDate1">任务提交开始时间：</label>
+                    <input type="text" id="history-query-startDate1" class="word" />
+                </div>
+                <div class="item-container">
+                    <label for="history-query-endDate1">任务提交结束时间：</label>
+                    <input type="text" id="history-query-endDate1" class="word" />
+                </div>
+                <br />
+                <div class="item-container">
+                    <label for="history-query-startDate2">视频提交开始时间：</label>
+                    <input type="text" id="history-query-startDate2" class="word" />
+                </div>
+                <div class="item-container">
+                    <label for="history-query-endDate2">视频提交结束时间：</label>
+                    <input type="text" id="history-query-endDate2" class="word" />
+                </div>
+                <div class="login-container">
+                    <button id="history-submit" class="login">查询</button>
+                </div>
+            </div>
+
+            <!-- 添加用户/管理员 -->
+            <div id="add-user-container" class="operation">
+                <!-- username -->
+                <div class="item-container">
+                    <label for="addusername">用户名：</label>
+                    <input type="text" id="addusername" class="word" />
+                </div>
+                <!-- password -->
+                <div class="item-container">
+                    <label for="addpassword">密码：</label>
+                    <input type="password" id="addpassword" class="word" />
+                </div>
+                <!-- password -->
+                <div class="item-container">
+                    <label for="addpasswordrepeat">确认密码：</label>
+                    <input type="password" id="addpasswordrepeat" class="word" />
+                </div>
+                <!-- select -->
+                <div class="item-container">
+                    <label>用户类型：</label>
+                    <select id="user-type">
+                        <option value="0">管理员</option>
+                        <option selected="selected" value="1">普通用户</option>
+                    </select>
+                </div>
+                <!-- 添加 -->
+                <div class="login-container">
+                    <button id="add-user" class="login">添加用户</button>
                 </div>
             </div>
 
@@ -90,6 +259,8 @@
         </div>
     </div>
     <script src="/src/js/jquery-1.9.0.min.js"></script>
+    <script src="/src/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="/src/js/jquery.ui.datepicker-zh-CN.js"></script>
     <script src="/src/js/table.js"></script>
     <script src="/src/js/index.js"></script>
 </body>

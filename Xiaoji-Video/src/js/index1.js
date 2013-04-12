@@ -480,51 +480,51 @@
 					});
 					
 					// 测试数据
-					for(var i = 0, len = 10; i < len; i ++) {
-						listsData.push({
-							videoid: i,
-                            taskid: i,
-                            url: 'urlurl....url....url..啊飒飒',
-							title: '名字名字名字名字',
-							describetext: '描述描述描描述描描述描述',
-							author: '坐着坐着坐着坐着',
-							createtime: '2013/03/02 10:0000',
-                            keywords: '关键词关键词关键词关键词关键关键词',
-                            timetext: '萨达萨达',
-							visit: '1234',
-							like: '676',
-                            dislike: '123123',
-							status: 2 * Math.random() | 0,
-							playtime: '123',
-							playlength: '12:00',
-							quality: '66',
-							thumbnail: 'http://www.baidu.com/img/baidu_jgylogo3.gif',
-                            // 增加了 addTime 字段，前端暂不处理
-                            addTime: '2013-04-02 xxxxxxxxxx'
-						});
-					}
-                    // 检索信息
-                    listsInfo = {
-                        code: 15,
-                        message: '我是检索词'
-                    };
-					var totalPage = Math.ceil(listsData.length / perPageNum);
-					pager.setTotal(totalPage);
-					Liststabler
-						.setHeaderFormat(ListsConf.hFormat)
-						.setBodyFormat(ListsConf.bFormat)
-						.setData(listsData.slice(0, perPageNum))
-						.render(true);
-                    // 显示信息
-                    if(taskid) {
-                        $('#info-id').html(taskid);
-                        $('#info-word').html(encodeHTML(listsInfo.message));
-                        $('#info-total').html(listsInfo.code);
-                        $('#listInfo').show();
-                    }
-                    // 为空提示
-                    listsData.length == 0
-                        && showTips('数据暂时为空！');
+					// for(var i = 0, len = 10; i < len; i ++) {
+					// 	listsData.push({
+					// 		videoid: i,
+     //                        taskid: i,
+     //                        url: 'urlurl....url....url..啊飒飒',
+					// 		title: '名字名字名字名字',
+					// 		describetext: '描述描述描描述描描述描述',
+					// 		author: '坐着坐着坐着坐着',
+					// 		createtime: '2013/03/02 10:0000',
+     //                        keywords: '关键词关键词关键词关键词关键关键词',
+     //                        timetext: '萨达萨达',
+					// 		visit: '1234',
+					// 		like: '676',
+     //                        dislike: '123123',
+					// 		status: 2 * Math.random() | 0,
+					// 		playtime: '123',
+					// 		playlength: '12:00',
+					// 		quality: '66',
+					// 		thumbnail: 'http://www.baidu.com/img/baidu_jgylogo3.gif',
+     //                        // 增加了 addTime 字段，前端暂不处理
+     //                        addTime: '2013-04-02 xxxxxxxxxx'
+					// 	});
+					// }
+     //                // 检索信息
+     //                listsInfo = {
+     //                    code: 15,
+     //                    message: '我是检索词'
+     //                };
+					// var totalPage = Math.ceil(listsData.length / perPageNum);
+					// pager.setTotal(totalPage);
+					// Liststabler
+					// 	.setHeaderFormat(ListsConf.hFormat)
+					// 	.setBodyFormat(ListsConf.bFormat)
+					// 	.setData(listsData.slice(0, perPageNum))
+					// 	.render(true);
+     //                // 显示信息
+     //                if(taskid) {
+     //                    $('#info-id').html(taskid);
+     //                    $('#info-word').html(encodeHTML(listsInfo.message));
+     //                    $('#info-total').html(listsInfo.code);
+     //                    $('#listInfo').show();
+     //                }
+     //                // 为空提示
+     //                listsData.length == 0
+     //                    && showTips('数据暂时为空！');
                     /////////////////////////////////////////////////////
 				}
 				else {
@@ -572,36 +572,36 @@
                             }
                         });
                         // 测试数据
-                        for(var i = 0, len = 35; i < len; i ++) {
-                            tasksData.push({
-                                id: i,
-                                status: '视频下载完成',
-                                filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
-                                starttime: '2013/03/02 10:0000',
-                                endtime: '2013/03/02 10:0000',
-                                filenum: '1234',
-                                maxlength: '676',
-                                minlength: 2 * Math.random() | 0,
-                                pagenum: '123',
-                                keywords: '检索词？？',
-                                iscc: '66',
-                                ishd: 'asd',
-                                name: '我是任务名<span></span>！',
-                                // 新增字段
-                                addTime: '2013-04-02 xxxxxxxxxx',
-                                result: '抓取结果'
-                            });
-                        }
-                        var totalPage = Math.ceil(tasksData.length / perPageNum);
-                        pager.setTotal(totalPage);
-                        Taskstabler
-                            .setHeaderFormat(TasksConf.hFormat)
-                            .setBodyFormat(TasksConf.bFormat)
-                            .setData(tasksData.slice(0, perPageNum))
-                            .render(true);
-                        // 为空提示
-                        tasksData.length == 0
-                            && showTips('数据暂时为空！');
+                        // for(var i = 0, len = 35; i < len; i ++) {
+                        //     tasksData.push({
+                        //         id: i,
+                        //         status: '视频下载完成',
+                        //         filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
+                        //         starttime: '2013/03/02 10:0000',
+                        //         endtime: '2013/03/02 10:0000',
+                        //         filenum: '1234',
+                        //         maxlength: '676',
+                        //         minlength: 2 * Math.random() | 0,
+                        //         pagenum: '123',
+                        //         keywords: '检索词？？',
+                        //         iscc: '66',
+                        //         ishd: 'asd',
+                        //         name: '我是任务名<span></span>！',
+                        //         // 新增字段
+                        //         addTime: '2013-04-02 xxxxxxxxxx',
+                        //         result: '抓取结果'
+                        //     });
+                        // }
+                        // var totalPage = Math.ceil(tasksData.length / perPageNum);
+                        // pager.setTotal(totalPage);
+                        // Taskstabler
+                        //     .setHeaderFormat(TasksConf.hFormat)
+                        //     .setBodyFormat(TasksConf.bFormat)
+                        //     .setData(tasksData.slice(0, perPageNum))
+                        //     .render(true);
+                        // // 为空提示
+                        // tasksData.length == 0
+                        //     && showTips('数据暂时为空！');
                         /////////////////////////////////////////////
                     }
 				}
@@ -634,21 +634,21 @@
                     }
                 });
                 // 测试数据
-                var data = [];
-                for(var i = 1, len = 15; i < len; i ++) {
-                    data.push({
-                        id: i,
-                        username: '用户名<span>asad!@#$',
-                        role: (Math.random() >= 0.5 ? 1 : 0)
-                    });
-                }
-                var totalPage = 0;
-                pager.setTotal(totalPage);
-                Acctstabler
-                    .setHeaderFormat(AcctsConf.hFormat)
-                    .setBodyFormat(AcctsConf.bFormat)
-                    .setData(data)
-                    .render(true);
+                // var data = [];
+                // for(var i = 1, len = 15; i < len; i ++) {
+                //     data.push({
+                //         id: i,
+                //         username: '用户名<span>asad!@#$',
+                //         role: (Math.random() >= 0.5 ? 1 : 0)
+                //     });
+                // }
+                // var totalPage = 0;
+                // pager.setTotal(totalPage);
+                // Acctstabler
+                //     .setHeaderFormat(AcctsConf.hFormat)
+                //     .setBodyFormat(AcctsConf.bFormat)
+                //     .setData(data)
+                //     .render(true);
                 //////////////////////////////////////////
             }
 		};
@@ -825,89 +825,89 @@
             );
 
             // 测试数据
-            (function(data) {
-                if(data.status == 200) {
-                    // 为空
-                    if(data.errorCode.code == 0
-                        || data.data.length == 0) {
-                        showTips('此检索词下暂无任务，将为此检索词添加新任务！');
-                        submitTask();
-                        // return
-                        return;
-                    }
-                    // 已有任务
-                    showTips('此检索词下已有相关任务，见下方列表。');
-                    // render.Tasks(undefined, data.data);
-                    var Lists = $('#Lists');
-                    var Tasks = $('#Tasks');
-                    var Accts = $('#Accts');
-                    Lists[0].className = '';
-                    Tasks[0].className = 'current';
-                    Accts[0].className = '';
-                    go.Tasks(data.data);
-                }
-            })({
-                status: 200,
-                errorCode: {
-                    code: 0
-                },
-                data: [
-                    {
-                        id: 3,
-                        status: '视频下载完成',
-                        filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
-                        starttime: '2013/03/02 10:0000',
-                        endtime: '2013/03/02 10:0000',
-                        filenum: '1234',
-                        maxlength: '676',
-                        minlength: 2 * Math.random() | 0,
-                        pagenum: '123',
-                        keywords: '检索词？？',
-                        iscc: '66',
-                        ishd: 'asd',
-                        name: '我是任务名<span></span>！',
-                        // 新增字段
-                        addTime: '2013-04-02 xxxxxxxxxx',
-                        result: '抓取结果'
-                    },
-                    {
-                        id: 3,
-                        status: '视频下载完成',
-                        filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
-                        starttime: '2013/03/02 10:0000',
-                        endtime: '2013/03/02 10:0000',
-                        filenum: '1234',
-                        maxlength: '676',
-                        minlength: 2 * Math.random() | 0,
-                        pagenum: '123',
-                        keywords: '检索词？？',
-                        iscc: '66',
-                        ishd: 'asd',
-                        name: '我是任务名<span></span>！',
-                        // 新增字段
-                        addTime: '2013-04-02 xxxxxxxxxx',
-                        result: '抓取结果'
-                    },
-                    {
-                        id: 3,
-                        status: '视频下载完成',
-                        filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
-                        starttime: '2013/03/02 10:0000',
-                        endtime: '2013/03/02 10:0000',
-                        filenum: '1234',
-                        maxlength: '676',
-                        minlength: 2 * Math.random() | 0,
-                        pagenum: '123',
-                        keywords: '检索词？？',
-                        iscc: '66',
-                        ishd: 'asd',
-                        name: '我是任务名<span></span>！',
-                        // 新增字段
-                        addTime: '2013-04-02 xxxxxxxxxx',
-                        result: '抓取结果'
-                    }
-                ]
-            });
+            // (function(data) {
+            //     if(data.status == 200) {
+            //         // 为空
+            //         if(data.errorCode.code == 0
+            //             || data.data.length == 0) {
+            //             showTips('此检索词下暂无任务，将为此检索词添加新任务！');
+            //             submitTask();
+            //             // return
+            //             return;
+            //         }
+            //         // 已有任务
+            //         showTips('此检索词下已有相关任务，见下方列表。');
+            //         // render.Tasks(undefined, data.data);
+            //         var Lists = $('#Lists');
+            //         var Tasks = $('#Tasks');
+            //         var Accts = $('#Accts');
+            //         Lists[0].className = '';
+            //         Tasks[0].className = 'current';
+            //         Accts[0].className = '';
+            //         go.Tasks(data.data);
+            //     }
+            // })({
+            //     status: 200,
+            //     errorCode: {
+            //         code: 120
+            //     },
+            //     data: [
+            //         {
+            //             id: 3,
+            //             status: '视频下载完成',
+            //             filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
+            //             starttime: '2013/03/02 10:0000',
+            //             endtime: '2013/03/02 10:0000',
+            //             filenum: '1234',
+            //             maxlength: '676',
+            //             minlength: 2 * Math.random() | 0,
+            //             pagenum: '123',
+            //             keywords: '检索词？？',
+            //             iscc: '66',
+            //             ishd: 'asd',
+            //             name: '我是任务名<span></span>！',
+            //             // 新增字段
+            //             addTime: '2013-04-02 xxxxxxxxxx',
+            //             result: '抓取结果'
+            //         },
+            //         {
+            //             id: 3,
+            //             status: '视频下载完成',
+            //             filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
+            //             starttime: '2013/03/02 10:0000',
+            //             endtime: '2013/03/02 10:0000',
+            //             filenum: '1234',
+            //             maxlength: '676',
+            //             minlength: 2 * Math.random() | 0,
+            //             pagenum: '123',
+            //             keywords: '检索词？？',
+            //             iscc: '66',
+            //             ishd: 'asd',
+            //             name: '我是任务名<span></span>！',
+            //             // 新增字段
+            //             addTime: '2013-04-02 xxxxxxxxxx',
+            //             result: '抓取结果'
+            //         },
+            //         {
+            //             id: 3,
+            //             status: '视频下载完成',
+            //             filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
+            //             starttime: '2013/03/02 10:0000',
+            //             endtime: '2013/03/02 10:0000',
+            //             filenum: '1234',
+            //             maxlength: '676',
+            //             minlength: 2 * Math.random() | 0,
+            //             pagenum: '123',
+            //             keywords: '检索词？？',
+            //             iscc: '66',
+            //             ishd: 'asd',
+            //             name: '我是任务名<span></span>！',
+            //             // 新增字段
+            //             addTime: '2013-04-02 xxxxxxxxxx',
+            //             result: '抓取结果'
+            //         }
+            //     ]
+            // });
             ///////////////////////////////////////////////
 		});
         $('#still-submit').click(function() {
@@ -1021,60 +1021,60 @@
                 }
             );
             // 测试数据
-            (function(data) {
-                if(data.status == 200) {
-                    var Lists = $('#Lists');
-                    var Tasks = $('#Tasks');
-                    var Accts = $('#Accts');
-                    Lists[0].className = '';
-                    Tasks[0].className = 'current';
-                    Accts[0].className = '';
-                    go.Tasks(data.data, true);
-                }
-            })({
-                status: 200,
-                errorCode: {
-                    code: 120
-                },
-                data: [
-                    {
-                        id: 3,
-                        status: '视频下载完成',
-                        filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
-                        starttime: '2013/03/02 10:0000',
-                        endtime: '2013/03/02 10:0000',
-                        filenum: '1234',
-                        maxlength: '676',
-                        minlength: 2 * Math.random() | 0,
-                        pagenum: '123',
-                        keywords: '检索词？？',
-                        iscc: '66',
-                        ishd: 'asd',
-                        name: '我是任务名<span></span>！',
-                        // 新增字段
-                        addTime: '2013-04-02 xxxxxxxxxx',
-                        result: '抓取结果'
-                    },
-                    {
-                        id: 3,
-                        status: '视频下载完成',
-                        filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
-                        starttime: '2013/03/02 10:0000',
-                        endtime: '2013/03/02 10:0000',
-                        filenum: '1234',
-                        maxlength: '676',
-                        minlength: 2 * Math.random() | 0,
-                        pagenum: '123',
-                        keywords: '检索词？？',
-                        iscc: '66',
-                        ishd: 'asd',
-                        name: '我是任务名<span></span>！',
-                        // 新增字段
-                        addTime: '2013-04-02 xxxxxxxxxx',
-                        result: '抓取结果'
-                    }
-                ]
-            });
+            // (function(data) {
+            //     if(data.status == 200) {
+            //         var Lists = $('#Lists');
+            //         var Tasks = $('#Tasks');
+            //         var Accts = $('#Accts');
+            //         Lists[0].className = '';
+            //         Tasks[0].className = 'current';
+            //         Accts[0].className = '';
+            //         go.Tasks(data.data, true);
+            //     }
+            // })({
+            //     status: 200,
+            //     errorCode: {
+            //         code: 120
+            //     },
+            //     data: [
+            //         {
+            //             id: 3,
+            //             status: '视频下载完成',
+            //             filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
+            //             starttime: '2013/03/02 10:0000',
+            //             endtime: '2013/03/02 10:0000',
+            //             filenum: '1234',
+            //             maxlength: '676',
+            //             minlength: 2 * Math.random() | 0,
+            //             pagenum: '123',
+            //             keywords: '检索词？？',
+            //             iscc: '66',
+            //             ishd: 'asd',
+            //             name: '我是任务名<span></span>！',
+            //             // 新增字段
+            //             addTime: '2013-04-02 xxxxxxxxxx',
+            //             result: '抓取结果'
+            //         },
+            //         {
+            //             id: 3,
+            //             status: '视频下载完成',
+            //             filepath: 'c:/asd/asd/sad/sadsa/ddsa/',
+            //             starttime: '2013/03/02 10:0000',
+            //             endtime: '2013/03/02 10:0000',
+            //             filenum: '1234',
+            //             maxlength: '676',
+            //             minlength: 2 * Math.random() | 0,
+            //             pagenum: '123',
+            //             keywords: '检索词？？',
+            //             iscc: '66',
+            //             ishd: 'asd',
+            //             name: '我是任务名<span></span>！',
+            //             // 新增字段
+            //             addTime: '2013-04-02 xxxxxxxxxx',
+            //             result: '抓取结果'
+            //         }
+            //     ]
+            // });
             ////////////////////////////////////////////////
         });
 
@@ -1132,29 +1132,29 @@
 				}
 			);
             // 测试数据
-            (function(data) {
-                if(data.status != 200) {
-                    alert('登录失败！请检查用户名密码或稍后再试');
-                    return;
-                }
-                if(data.status == 200) {
-                    loginF = true;
-                    // 存储登录信息
-                    globalUserName = data.data.username;
-                    globalUserId   = data.data.id;
-                    data.data.role == 0 
-                        && (globalSuper = true);
-                    globalUsertoken = password.val();
-                    mainer.init();
-                }
-            })({
-                status: 200,
-                data: {
-                    id: 5,
-                    username: 'meiya',
-                    role: 0
-                }
-            });
+            // (function(data) {
+            //     if(data.status != 200) {
+            //         alert('登录失败！请检查用户名密码或稍后再试');
+            //         return;
+            //     }
+            //     if(data.status == 200) {
+            //         loginF = true;
+            //         // 存储登录信息
+            //         globalUserName = data.data.username;
+            //         globalUserId   = data.data.id;
+            //         data.data.role == 0 
+            //             && (globalSuper = true);
+            //         globalUsertoken = password.val();
+            //         mainer.init();
+            //     }
+            // })({
+            //     status: 200,
+            //     data: {
+            //         id: 5,
+            //         username: 'meiya',
+            //         role: 0
+            //     }
+            // });
             ////////////////////////////////////////////////////
 		});
         // 注册状态
@@ -1265,19 +1265,19 @@
                 }
             );
             // 测试数据
-            (function(data) {
-                if(data.status == 200) {
-                    // success
-                    alert('注册成功！请确认后登录');
-                    window.setTimeout(function() {
-                        window.location.reload();
-                    }, 500);
-                    return;
-                }
-                alert('注册失败！请稍后再试');
-            })({
-                status: 200
-            });
+            // (function(data) {
+            //     if(data.status == 200) {
+            //         // success
+            //         alert('注册成功！请确认后登录');
+            //         window.setTimeout(function() {
+            //             window.location.reload();
+            //         }, 500);
+            //         return;
+            //     }
+            //     alert('注册失败！请稍后再试');
+            // })({
+            //     status: 200
+            // });
             ////////////////////////////////////////////////////
         });
 
@@ -1340,21 +1340,21 @@
                 }
             );
             // 测试数据
-            (function(data) {
-                if(data.status == 0) {
-                    // success
-                    showTips('添加用户成功！');
-                    // 清空
-                    addusername.val('');
-                    addpassword.val('');
-                    addpasswordrepeat.val('');
-                    go.Auto();
-                    return;
-                }
-                alert('添加用户失败！请稍后再试');
-            })({
-                status: 0
-            });
+            // (function(data) {
+            //     if(data.status == 0) {
+            //         // success
+            //         showTips('添加用户成功！');
+            //         // 清空
+            //         addusername.val('');
+            //         addpassword.val('');
+            //         addpasswordrepeat.val('');
+            //         go.Auto();
+            //         return;
+            //     }
+            //     alert('添加用户失败！请稍后再试');
+            // })({
+            //     status: 0
+            // });
             //////////////////////////////////////////////////////
         });
 
@@ -1409,22 +1409,22 @@
                 }
             );
             // 测试数据
-            (function(data) {
-                if(data.status == 200) {
-                    // success
-                    showTips('修改密码成功！');
-                    globalUsertoken = newpassword.val();
-                    // 清空
-                    oldpassword.val('');
-                    newpassword.val('');
-                    renewpassword.val('');
-                    $('#editpass')[0].click();
-                    return;
-                }
-                alert('修改密码失败！请稍后再试');
-            })({
-                status: 200
-            });
+            // (function(data) {
+            //     if(data.status == 200) {
+            //         // success
+            //         showTips('修改密码成功！');
+            //         globalUsertoken = newpassword.val();
+            //         // 清空
+            //         oldpassword.val('');
+            //         newpassword.val('');
+            //         renewpassword.val('');
+            //         $('#editpass')[0].click();
+            //         return;
+            //     }
+            //     alert('修改密码失败！请稍后再试');
+            // })({
+            //     status: 200
+            // });
             //////////////////////////////////////////////////////
 		});
 

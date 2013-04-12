@@ -4,8 +4,8 @@
 	border: 1px solid #EEE;
 	border-radius: 10px;
 	box-shadow: 0 0 20px silver, inset 0 0 10px #D4D0C8;
-	width: 1024px;
-	min-width: 1024px;
+	width: 1280px;
+	min-width: 1280px;
 	margin: 20px auto;
 	padding: 20px;
 	position: relative;
@@ -16,6 +16,7 @@
 	border-bottom: 1px solid #EEE;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
+    position: relative;
 }
 .item-container {
 	display: inline-block;
@@ -24,6 +25,7 @@
 	margin-right: 20px;
     *display: inline;
     zoom: 1;
+    margin-top: 5px;
 }
 .red {
     color: red;
@@ -40,6 +42,8 @@ label {
     display: inline-block;
     height: 25px;
     line-height: 25px;
+    width: 90px;
+    text-align: right;
 }
 .date {
 	width: 160px;
@@ -55,6 +59,7 @@ label {
     display: inline-block;
     *display: inline;
     zoom: 1;
+    margin-left: 39px;
 }
 .table-container {
 	border-bottom: 1px solid #EEE;
@@ -167,7 +172,7 @@ label {
 }
 .my-table-header-class th {
     border: 1px solid #888;
-    text-align: center;
+    text-align: left;
     /*vertical-align: middle;*/
     height: 35px;
     font-weight: bold;
@@ -192,11 +197,11 @@ label {
  * 表身样式 TableBody
  */
 .my-table-body-class tr {
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 .my-table-body-class td {
     border: 1px solid #888;
-    text-align: center;
+    text-align: left;
     /*vertical-align: middle;*/
     height: 40px;
 }
@@ -355,6 +360,7 @@ label {
     margin-left: 23px;
     color: blue;
     cursor: pointer;
+    font-size: 14px;
 }
 .tab-switch-container .current {
     color: gray;
@@ -395,4 +401,139 @@ label {
     zoom: 1;
     margin-left: 41px;
     display: none;
+}
+.sure-label {
+    text-align: center;
+    width: 60px;
+}
+.deltask {
+    display: inline-block;
+    font-size: 120%;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+.register-container {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 20px;
+    color: blue;
+    cursor: pointer;
+}
+.register-container:hover {
+    text-decoration: underline;
+}
+.register-outer-container {
+    border-top: 1px solid silver;
+    margin-top: 20px;
+    padding-top: 20px;
+    display: none;
+}
+.has-logined {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    right: 100px;
+}
+.has-logined strong {
+    font-weight: bold;
+}
+.has-logined b {
+    font-weight: normal;
+    font-style: italic;
+}
+#Accts {
+    /* 初始隐藏 */
+    display: none;
+}
+.tips {
+    display: inline-block;
+    position: absolute;
+    bottom: 35px;
+    right: 10px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #red;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+#add-user-container {
+    display: none;
+}
+.editpass {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: blue;
+    cursor: pointer;
+}
+.editpass:hover {
+    text-decoration: underline;
+}
+#editpass-container {
+    display: none;
+}
+#AddUserTarget {
+    display: none;
+    font-size: 12px;
+}
+#AddUserTarget:hover {
+    text-decoration: underline;
+}
+.history-target {
+    font-size: 12px !important;
+    /*display: none;*/
+}
+.history-target:hover {
+    text-decoration: underline;
+}
+#history-container {
+    display: none;
+}
+/*#add-user-button {
+    display: inline-block;
+    color: blue;
+    cursor: pointer;
+    font-weight: normal;
+}
+#add-user-button:hover {
+    text-decoration: underline;
+}*/
+.listInfo {
+    padding-left: 39px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: gray;
+    display: none;
+}
+.listInfo span {
+    display: inline-block;
+    margin-right: 30px;
+    font-weight: bold;
+}
+.still-submit-container {
+    /*display: inline-block;
+    *display: inline;
+    zoom: 1;*/
+    display: none;
+}
+.still-submit-container-show {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+.submit-container-hide {
+    display: none;
+}
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+    width: 38% !important;
+}
+#history-container .item-container label {
+    width: 120px;
+}
+.notice {
+    color: red;
 }
