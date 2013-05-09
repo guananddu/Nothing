@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FlashXml>
+<input1 type="text" title="新郞" alt="">尚博</input1>
+<input2 type="text" title="新娘" alt="">付倩倩</input2>
+<input3 type="text" title="婚宴时间" alt="">2013年05月  日 十二点</input3>
+<input4 type="text" title="婚宴地点" alt="">详细地址xxx</input4>
+<input5 type="pic" title="结婚照一" alt="宽度：556 高度：550" width="800" height="533">qwe_files/22.jpg</input5>
+<input6 type="pic" title="结婚照二" alt="宽度：556 高度：550" width="533" height="800">qwe_files/33.jpg</input6>
+<input7 type="pic" title="结婚照三" alt="宽度：556 高度：550" width="800" height="533">qwe_files/44.jpg</input7>
+<input8 type="pic" title="结婚照四" alt="宽度：556 高度：550" width="800" height="533">qwe_files/55.jpg</input8>
+<input9 type="pic" title="结婚照五(封面)" alt="宽度：556 高度：550" width="566" height="532">qwe_files/11.jpg</input9>
+<input10 type="music" title="背景音乐" alt=""></input10>
+<input11 type="map" title="地图链接" alt="百度地图标注参考：http://dzqjw.com/GroupBoardInfo.aspx?id=34101"><![CDATA[http://map.baidu.com/?poiShareId=d12cb821ffd171b4e5073882&tn=B_NORMAL_MAP]]></input11>
+<input12 type="pic" title="地图图片" alt="宽度：800高度:800,如果为空则直接打开上面链接" width="800" height="800">qwe_files/map.jpg</input12>
+</FlashXml>
