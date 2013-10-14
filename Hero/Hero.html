@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>英雄杀简易记牌器</title>
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <style>
+
+            body {
+                font-size: 18px;
+                background-color: #764242;
+            }
+
+            .container {
+                border-radius: 20px;
+                box-shadow: 2px 2px 4px #676161;
+                min-height: 200px;
+                min-width: 200px;
+                position: relative;
+                top: 70px;
+                margin: 0 auto;
+                padding: 10px;
+                background-color: #fff;
+            }
+
+            .th {
+                font-size: 150%;
+                background-color: #b6adad;
+            }
+
+            .lth {
+                font-size: 150%;
+                background-color: #8aa9f4;
+                color: #6d4a4a;
+            }
+
+            .fangkuai, .hongtao {
+                color: red;
+            }
+
+            .meihua, heitao {
+                color: #000;
+            }
+
+            th, td {
+                position: relative;
+                border: 1px solid silver;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                height: 35px;
+            }
+
+            td {
+                font-size: 14px;
+                padding: 0 5px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .selected {
+                background-color: #00a9ba;
+                color: #fff;
+            }
+
+            .reset {
+                display: block;
+                width: 200px;
+                height: 40px;
+                text-align: center;
+                line-height: 20px;
+                margin: 0 auto;
+                position: relative;
+                top: 50px;
+            }
+
+            .resultl {
+                top: 120px;
+                left: 10px;
+                position: fixed;
+                width: 200px;
+                color: #aea2a2;
+                font-size: 14px;
+            }
+
+            .resultr {
+                top: 120px;
+                right: 10px;
+                position: fixed;
+                width: 200px;
+                color: #aea2a2;
+                font-size: 14px;
+            }
+
+            .red {
+                color: #fff;
+                font-size: 120%;
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="resultl"></div>
+
+        <div class="resultr"></div>
+        
+        <button class="reset">重置</button>
+
+        <table class="container" cellspacing="1" cellpadding="0">
+
+            <tr>
+                <th class="th">↘</th>
+                <th class="th fangkuai" colspan="2">♦</th>
+                <th class="th hongtao" colspan="2">♥</th>
+                <th class="th meihua" colspan="2">♣</th>
+                <th class="th heitao" colspan="2">♠</th>
+            </tr>
+
+            <tr>
+                <td class="lth">A</td>
+                <td>万箭齐发</td>
+                <td>休养生息</td>
+                <td>决斗</td>
+                <td>虎符</td>
+                <td>手捧雷</td>
+                <td>决斗</td>
+                <td>决斗</td>
+                <td>虎符</td>
+            </tr>
+
+            <tr>
+                <td class="lth">2</td>
+                <td>闪</td>
+                <td>闪</td>
+                <td>闪</td>
+                <td>闪</td>
+                <td>玉如意</td>
+                <td>龙鳞刀</td>
+                <td>杀</td>
+                <td>玉如意</td>
+            </tr>
+
+            <tr>
+                <td class="lth">3</td>
+                <td>闪</td>
+                <td>五谷丰登</td>
+                <td>药</td>
+                <td>探囊取物</td>
+                <td>探囊取物</td>
+                <td>釜底抽薪</td>
+                <td>杀</td>
+                <td>釜底抽薪</td>
+            </tr>
+
+            <tr>
+                <td class="lth">4</td>
+                <td>闪</td>
+                <td>五谷丰登</td>
+                <td>药</td>
+                <td>探囊取物</td>
+                <td>探囊取物</td>
+                <td>釜底抽薪</td>
+                <td>杀</td>
+                <td>釜底抽薪</td>
+            </tr>
+            
+            <tr>
+                <td class="lth" rowspan="2">5</td>
+                <td>博浪锤</td>
+                <td>闪</td>
+                <td colspan="2">霸王弓</td>
+                <td colspan="2">盘龙棍</td>
+                <td colspan="2">杀</td>
+            </tr>
+
+            <tr>
+                <td colspan="2">忽雷驳（防御马）</td>
+                <td colspan="2">赤兔（进攻马）</td>
+                <td colspan="2">蹑影（防御马）</td>
+                <td colspan="2">追风（防御马）</td>
+            </tr>
+
+            <tr>
+                <td class="lth">6</td>
+                <td>闪</td>
+                <td>画地为牢</td>
+                <td>药</td>
+                <td>杀</td>
+                <td>鱼肠剑</td>
+                <td>画地为牢</td>
+                <td>杀</td>
+                <td>画地为牢</td>
+            </tr>
+
+            <tr>
+                <td class="lth">7</td>
+                <td>闪</td>
+                <td>杀</td>
+                <td>药</td>
+                <td>无中生有</td>
+                <td>杀</td>
+                <td>烽火狼烟</td>
+                <td>杀</td>
+                <td>烽火狼烟</td>
+            </tr>
+
+            <tr>
+                <td class="lth">8</td>
+                <td>闪</td>
+                <td>杀</td>
+                <td>药</td>
+                <td>无中生有</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+            </tr>
+
+            <tr>
+                <td class="lth">9</td>
+                <td>闪</td>
+                <td>杀</td>
+                <td>药</td>
+                <td>无中生有</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+            </tr>
+
+            <tr>
+                <td class="lth">10</td>
+                <td>闪</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+                <td>杀</td>
+            </tr>
+
+            <tr>
+                <td class="lth">J</td>
+                <td>闪</td>
+                <td>闪</td>
+                <td>杀</td>
+                <td>无中生有</td>
+                <td>无懈可击</td>
+                <td>探囊取物</td>
+                <td>杀</td>
+                <td>杀</td>
+            </tr>
+
+            <tr>
+                <td class="lth" rowspan="2">Q</td>
+                <td>手捧雷</td>
+                <td>釜底抽薪</td>
+                <td>狼牙棒</td>
+                <td>无懈可击</td>
+                <td>芦叶枪</td>
+                <td>釜底抽薪</td>
+                <td>无懈可击</td>
+                <td>借刀杀人</td>
+            </tr>
+
+            <tr>
+                <td colspan="2">药</td>
+                <td colspan="2">药</td>
+                <td class="none" colspan="2">-</td>
+                <td class="none" colspan="2">-</td>
+            </tr>
+
+            <tr>
+                <td class="lth" rowspan="2">K</td>
+                <td colspan="2">杀</td>
+                <td colspan="2">的卢（进攻马）</td>
+                <td colspan="2">乌骓（进攻马）</td>
+                <td>无懈可击</td>
+                <td>借刀杀人</td>
+            </tr>
+
+            <tr>
+                <td class="none" colspan="2">-</td>
+                <td colspan="2">闪</td>
+                <td colspan="2">烽火狼烟</td>
+                <td class="none" colspan="2">-</td>
+            </tr>
+
+        </table>
+
+        <script>
+
+            function calculate () {
+
+                var tds = $( 'td' );
+                var results = {
+                    all: {},
+                    selected: {}
+                };
+
+                tds.each( function () {
+
+                    var thisTd = $( this );
+                    if ( thisTd.hasClass( 'lth' ) 
+                        || thisTd.hasClass( 'none' ) )
+                        return;
+                    var text = thisTd.text();
+
+                    !results.all[ text ]
+                        ? ( results.all[ text ] = 1 )
+                        : results.all[ text ] ++;
+
+                    if ( results.selected[ text ] == undefined )
+                        results.selected[ text ] = 0;
+
+                    if ( thisTd.hasClass( 'selected' ) )
+                        results.selected[ text ] ++;
+
+                } );
+
+                // display
+                var outl = [ ], outr = [ ], countr = 0;;
+                for (var key in results.all) {
+
+                    countr ++;
+                    var handler = countr > 15
+                        ? outr
+                        : outl;
+                    handler.push( 
+                        key + '：<strong class="red">' 
+                            + ( results.all[ key ] - results.selected[ key ] ) 
+                            + '</strong> 个'
+                     );
+
+                }
+
+                $( '.resultl' ).html( outl.join( '<br />---<br />' ) );
+                $( '.resultr' ).html( outr.join( '<br />---<br />' ) );
+
+            }
+
+            calculate();
+
+            $( '.container' )
+                .delegate( 'td', 'click', function () {
+                    var me = $( this );
+
+                    if ( me.hasClass( 'lth' )
+                        || me.hasClass( 'none' ) )
+                        return;
+
+                    var cls = 'selected';
+                    me.hasClass( cls )
+                        ? me.removeClass( cls )
+                        : me.addClass( cls );
+
+                    calculate();
+
+                } );
+
+            $( '.reset' ).click( function () {
+
+                $( 'td' ).removeClass( 'selected' );
+                calculate();
+
+            } );
+
+        </script>
+    </body>
+</html>
